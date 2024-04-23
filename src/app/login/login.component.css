@@ -168,3 +168,6 @@ transition: height 0.2s ease;
     text-decoration: underline;;
 }
 
+.hide{
+    display: none;
+}

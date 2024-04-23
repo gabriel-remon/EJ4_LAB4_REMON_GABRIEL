@@ -1,9 +1,10 @@
 import { CommonModule, NgClass } from '@angular/common';
 import { Component, EventEmitter, NgModule, Output, inject } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { LocalStorageService } from '../service/local-storage.service';
 import { User } from '../models/user';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-login',
@@ -14,29 +15,27 @@ import { User } from '../models/user';
 })
 export class LoginComponent {
   formLogin= new FormGroup ({
-    email: new FormControl(''),
-    password: new FormControl(''),
+    email: new FormControl('',[Validators.required,Validators.email]),
+    password: new FormControl('',[Validators.required,Validators.minLength(5)]),
   })
 
   formRegister= new FormGroup ({
-    name: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
+    name: new FormControl('',Validators.required),
+    email: new FormControl('',[Validators.required,Validators.email]),
+    password: new FormControl('',[Validators.required,Validators.minLength(5)]),
   })
   
   localStorage = inject(LocalStorageService)
 
   submitLogin(){
    
-    console.log(
-      this.localStorage.login(this.formLogin.value)
-    )
-
+    
+    const res = this.localStorage.login(this.formLogin.value)?"usuario logeado":"no se encontro el usuario"
+    swal(res)
   }
   submitRegister(){
-    console.log(
-      this.localStorage.register( this.formRegister.value)?
-      "registro exitoso":"no se puedo registrar")
+    swal((this.localStorage.register( this.formRegister.value)?
+      "registro exitoso":"no se puedo registrar"))
   }
 
   expression=false
