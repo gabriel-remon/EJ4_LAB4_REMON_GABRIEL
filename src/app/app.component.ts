@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { BienvenidoComponent } from './bienvenido/bienvenido.component';
@@ -12,29 +12,15 @@ import { BienvenidoComponent } from './bienvenido/bienvenido.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  login=false;
-  error=false;
-  bienvenido= false
-  title = 'ejercicio2';
+  title = 'ejercicio 3';
 
-  closeLogin(){
-    this.login=false;
-  }
-  openLogin(){
-    this.login=true;
+  constructor(private router: Router) {
+
   }
 
-  CloseError(){
-    this.error=false;
-  }
-  openError(){
-    this.error=true;
+
+  goto(path : string){
+    this.router.navigate([path]);
   }
 
-  CloseBienvenido(){
-    this.bienvenido=false;
-  }
-  openBienvenido(){
-    this.bienvenido=true;
-  }
 }

@@ -10,9 +10,5 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './error.component.css'
 })
 export class ErrorComponent {
-  @Output()  eventClose = new EventEmitter();
-
-  close(){
-    this.eventClose.emit();
-  }
+ 
 }

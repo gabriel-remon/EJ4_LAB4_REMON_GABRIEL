@@ -10,9 +10,5 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './bienvenido.component.css'
 })
 export class BienvenidoComponent {
-  @Output()  eventClose = new EventEmitter();
 
-  close(){
-    this.eventClose.emit();
-  }
 }

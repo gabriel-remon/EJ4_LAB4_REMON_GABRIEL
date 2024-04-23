@@ -12,7 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class LoginComponent {
   expression=false
-  @Output() eventClose = new EventEmitter();
 
   activateRegister(){
     this.expression=false;
@@ -21,8 +20,7 @@ export class LoginComponent {
     this.expression=true;
   }
 
-  close(){
-    this.eventClose.emit()
+ cerrarComponenteYVolver() {
+    window.history.back();
   }
-
 }
