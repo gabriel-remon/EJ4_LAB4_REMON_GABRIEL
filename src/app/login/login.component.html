@@ -6,29 +6,32 @@
 
     <div class="form-box login">
         <h2>Login</h2>
-        <form action="#">
-
+        <form [formGroup]="formLogin" (ngSubmit)="submitLogin()">
 
             <div class="input-box">
                 <span class="icon"><mat-icon >email</mat-icon></span>
-                <input type="email" required>
+                <input type="email" 
+                formControlName='email'
+                required>
                 <label >Email</label>
             </div>
 
             <div class="input-box">
-                <span class="icon"><mat-icon >lock</mat-icon></span>
-                <input type="password" required>
+                <span class="icon" (click)="changeMode()"><mat-icon >{{mode==="password" ? 'lock':'lock_open'}}</mat-icon></span>
+                <input type={{mode}} 
+                formControlName='password'
+                required>
                 <label>Password</label>
             </div>
-
+        <!--
             <div class="remember-forgot">
                 <label><input type="checkbox">Recordar contraseña</label>
-                <a href="#">Olvidaste la contraseña?</a>
+                <a>Olvidaste la contraseña?</a>
             </div>
-
+        -->
             <button type="submit" class="btn">Login</button>
             <div class="login-register">
-                <p>¿No eres miembro todavía?<a class="register-link" (click)="activateLogin()">Registrate aqui</a></p>
+                <p>¿No eres miembro todavía?<a class="register-link" (click)="changeLogin()">Registrate aqui</a></p>
             </div>
         
         </form>
@@ -36,34 +39,40 @@
 
     <div class="form-box register">
         <h2>Registro</h2>
-        <form action="#">
+        <form [formGroup]="formRegister" (ngSubmit)="submitRegister()">
 
             <div class="input-box">
                 <span class="icon"><mat-icon >person</mat-icon></span>
-                <input type="text" required>
+                <input type="text" 
+                formControlName='name'
+                required>
                 <label >Usuario</label>
             </div>
 
             <div class="input-box">
                 <span class="icon"><mat-icon >email</mat-icon></span>
-                <input type="email" required>
+                <input type="email"
+                formControlName='email'
+                required>
                 <label >Email</label>
             </div>
 
             <div class="input-box">
-                <span class="icon"><mat-icon >lock</mat-icon></span>
-                <input type="password" required>
+                <span class="icon" (click)="changeMode()" ><mat-icon >{{mode==="password" ? 'lock':'lock_open'}}</mat-icon></span>
+                <input type={{mode}}  
+                formControlName='password'
+                required>
                 <label>Password</label>
             </div>
-
+            <!--
             <div class="remember-forgot">
                 <label><input type="checkbox">Acepta los terminos y condiciones?</label>
             </div>
-
-            <button type="submit" class="btn">Registrarse</button>
+            -->
+            <button type="submit" class="btn" >Registrarse</button>
 
             <div class="login-register">
-                <p>¿Ya esmiembro?<a class="login-link" (click)="activateRegister()">Presione aqui</a></p>
+                <p>¿Ya es miembro?<a class="login-link" (click)="changeLogin()">Presione aqui</a></p>
             </div>
         
         </form>
